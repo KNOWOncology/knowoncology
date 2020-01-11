@@ -3,7 +3,6 @@ const User = require('../../lib/models/User');
 describe('User model', () => {
   it('requires an email', async() => {
     const user = new User({
-      email: null,
       password: 'password',
       role: 'user'
     });
@@ -16,7 +15,6 @@ describe('User model', () => {
   it('requires a password', async() => {
     const user = new User({
       email: 'test@test.com',
-      password: null,
       role: 'user'
     });
 
