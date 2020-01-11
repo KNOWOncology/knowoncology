@@ -1,7 +1,7 @@
 {
   "name": "knowoncology",
   "version": "1.0.0",
-  "description": "",
+  "description": "knowoncology",
   "main": "server.js",
   "scripts": {
     "test": "jest --verbose --runInBand",

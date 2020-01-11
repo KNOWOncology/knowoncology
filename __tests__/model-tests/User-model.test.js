@@ -3,6 +3,7 @@ const User = require('../../lib/models/User');
 describe('User model', () => {
   it('requires an email', async() => {
     const user = new User({
+      email: null,
       password: 'password',
       role: 'user'
     });
@@ -15,6 +16,7 @@ describe('User model', () => {
   it('requires a password', async() => {
     const user = new User({
       email: 'test@test.com',
+      password: null,
       role: 'user'
     });
 
@@ -23,7 +25,7 @@ describe('User model', () => {
     expect(errors.passwordHash.message).toEqual('Path `passwordHash` is required.');
   });
 
-  it('only accepts "user" or "admin" in role', async() => {
+  it('rejects a non "user" or "admin" role', async() => {
     const failedUser = new User({
       email: 'test@test.com',
       password: 'password',
@@ -32,6 +34,8 @@ describe('User model', () => {
 
     const { errors } = failedUser.validateSync();
 
-    expect(errors.role.message).toEqual('Valid roles are user or admin.');
+    expect(errors.role.message).toEqual('Invalid user role.');
   });
+
+  
 });
