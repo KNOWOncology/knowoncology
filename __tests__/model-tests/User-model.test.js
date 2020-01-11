@@ -8,7 +8,7 @@ describe('User model', () => {
     });
 
     const { errors } = user.validateSync();
-
+    
     expect(errors.email.message).toEqual('Path `email` is required.');
   });
 
