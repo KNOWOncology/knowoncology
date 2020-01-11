@@ -3,7 +3,7 @@ const request = require('supertest');
 const app = require('../../lib/app');
 
 describe('auth routes', () => {
-  it.skip('creates a new user with default role of user', () => {
+  it('creates a new user with default role of user', () => {
     return request(app)
       .post('/api/v1/auth/signup')
       .send({
