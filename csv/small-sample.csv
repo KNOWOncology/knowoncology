@@ -1,2 +1,10 @@
-timestamp,summarizerName,summaryTitle,yearPublished,studyAuthor,studyType,publicSummary.entry,studyDesignFeatures.entry,populationDesc.entry,numParticipants.entry,tumorType.entry
+timestamp,summarizerName,summaryTitle,yearPublished,studyAuthor,studyType,publicSummary.entry,studyDesignFeatures.entry,populationDesc.entry,numParticipants.entry,tumorType.entry,staging.entry,pathology.entry,molecularTargets.entry,naturalTherapyCategory.entry,naturalTherapyDesc.entry,naturalTherapyName.entry,naturalTherapyComponents.entry,comparator.entry,outcomesResults.entry,outcomeCategory.entry,outcomeResults.entry,adverseEvents.entry,adverseEventsOpt.entry,adverseEventsDesc.entry,interactions.entry,interactionsDesc.entry,tumorTypeTags.entry,sideEffectTags.entry,conventionalTreatment.entry,conventionalTreatmentAgents.entry,qraRandomSeqGen.entry,qraAllocationConceal.entry,qraBlindingParticipants.entry,qraBlindingOutcomeAssess.entry,qraIncompleteOutcomeData.entry,qraSelectiveReporting.entry,qraOtherBias.entry
+
+
+
+
+
+
+
+
 11/30/2015 12:00:00,Louden,"Effects of a green tea extract, Polyphenon E, on systemic biomarkers of growth factor signalling in women with hormone receptor-negative breast cancer",2014,,Clinical trial,"Breast cancer survivors who had hormone receptor negative breast cancer who took oral green tea extract, EGCG 400-800mg daily for two months had improved growth factor signaling (HGF)  compared to the placebo group. There were no statistically significant changes in markers of inflammation or angiogenesis.",Double blind randomized controlled trial,40 women age 21 to 65 years with a history of resected stage I-III estrogen receptor negative and progestorone receptor negative breast carcinoma without evidence of disease at trial entry and a minumum of 6 months since surgery or treatment,"N=40 (0 male, 40 females)","cancerous, survivors",Breast cancer survivors
