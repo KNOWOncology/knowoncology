@@ -90,4 +90,20 @@ describe('auth routes', () => {
         role: 'admin',
         __v: 0
       })));
+  it('can log a user out', async() => {
+    await agents.userAgent
+      .post('/api/v1/auth/logout')
+      .then(res => expect(res.body).toEqual({
+        _id: users.regular._id,
+        email: 'user@test.com',
+        displayName: 'user',
+        role: 'regular',
+        __v: 0
+      }));
+    await agents.userAgent
+      .get('/api/v1/auth/verify')
+      .then(res => {
+        expect(res.status).toEqual(500);
+      });    
+  });
 });
