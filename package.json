@@ -1,10 +1,10 @@
 {
   "name": "knowoncology",
   "version": "1.0.0",
-  "description": "",
+  "description": "knowoncology",
   "main": "server.js",
   "scripts": {
-    "test": "jest --verbose --runInBand",
+    "test": "jest --verbose --runInBand --testTimeout=30000",
     "tw": "npm run test -- --watchAll",
     "start": "node server.js",
     "start:watch": "nodemon server.js"
