@@ -14,7 +14,7 @@ class Header extends Component {
     return /*html*/ `
       <header>
         <ul>
-          <a href="../../pages/home/home.html">KNOW Home</a>
+          <a href="../../pages/home/home.html">Home</a>
           <a href="../../pages/studies/studies.html">Studies</a>
           <button id="logout">Log out</button>
         </ul>
