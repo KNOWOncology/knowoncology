@@ -11,6 +11,7 @@ describe('auth routes', () => {
       .then(res => expect(res.body).toEqual({
         _id: expect.any(String),
         email: 'test@test.com',
+        displayName: 'test',
         role: 'regular',
         __v: 0
       })));
@@ -25,6 +26,7 @@ describe('auth routes', () => {
       .then(res => expect(res.body).toEqual({
         _id: users.regular._id,
         email: 'user@test.com',
+        displayName: 'user',
         role: 'regular',
         __v: 0
       })));
@@ -39,6 +41,7 @@ describe('auth routes', () => {
       .then(res => expect(res.body).toEqual({
         _id: users.admin._id,
         email: 'admin@test.com',
+        displayName: 'admin',
         role: 'admin',
         __v: 0
       })));
@@ -83,6 +86,7 @@ describe('auth routes', () => {
       .then(res => expect(res.body).toEqual({
         _id: users.regular._id,
         email: 'user@test.com',
+        displayName: 'user',
         role: 'admin',
         __v: 0
       })));
