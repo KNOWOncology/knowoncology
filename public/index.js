@@ -12,7 +12,7 @@ const displaySignup = () => {
       <button id="user-button">Signup</button>
     </fieldset>
     <p id="switcher">Already have a KNOWOncology account?</p>
-    <button id="display-login">Click here for log in!</button>
+    <button id="display-login">Click here to log in!</button>
   `;  
 
   form
