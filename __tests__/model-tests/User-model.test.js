@@ -48,12 +48,12 @@ describe('User model', () => {
 
   it('accepts an email with multiple @ signs in the username', () => {
     const user = new User({
-      email: 'test@test@@bad@gmail.com',
+      email: 'test@test@@weirdusername@gmail.com',
       password: 'password',
       role: 'user'
     });
 
-    expect(user.displayName).toEqual('test@test@@bad');
+    expect(user.displayName).toEqual('test@test@@weirdusername');
   })
 
   
