@@ -1,6 +1,8 @@
 ### Node ###
 # dotenv
 .env
+*.csv
+**/.csv
 
 # Logs
 logs
