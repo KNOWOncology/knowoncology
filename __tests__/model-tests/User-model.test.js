@@ -1,6 +1,17 @@
 const User = require('../../lib/models/User');
 
 describe('User model', () => {
+  it('defaults a display name to email user', async() => {
+    const user = new User({
+      email: 'test@test.com',
+      role: 'user'
+    });
+
+    const { errors } = user.validateSync();
+
+    expect(user.displayName).toEqual('test');
+  });
+
   it('requires an email', async() => {
     const user = new User({
       password: 'password',
@@ -34,6 +45,16 @@ describe('User model', () => {
 
     expect(errors.role.message).toEqual('Invalid user role.');
   });
+
+  it('accepts an email with multiple @ signs in the username', () => {
+    const user = new User({
+      email: 'test@test@@bad@gmail.com',
+      password: 'password',
+      role: 'user'
+    });
+
+    expect(user.displayName).toEqual('test@test@@bad');
+  })
 
   
 });
