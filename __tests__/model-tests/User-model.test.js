@@ -56,4 +56,5 @@ describe('User model', () => {
     expect(user.displayName).toEqual('test@test@@weirdusername');
   })
 
+
 });
