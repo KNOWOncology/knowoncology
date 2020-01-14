@@ -8,3 +8,26 @@ mongoose.connect('mongodb://localhost:27017/knowoncology', {
   useFindAndModify: false, 
   useCreateIndex: true
 }); 
+
+
+[
+  {
+    '$match': {
+      'caseNumber': 'Case 1:'
+    }
+  }
+]
+;
+
+[
+  {
+    '$match': {
+      'caseNumber': 'Case 1:'
+    }
+  }, {
+    '$sort': {
+      'caseNumber': -1
+    }
+  }
+]
+;
