@@ -13,19 +13,20 @@ class Filter extends Component {
     const filterdiv = dom.querySelector('#filter');
     const filterArrays = [
             
-            
+      naturalTherapies, conventionalTreatementTypes, sideEffects, yearPublished, studyDesigns, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomes, outcomeTypes, interactions, naturalTerapyTypes, conventionalTreatmentTypes   
             
     ];
     filterArrays.forEach(array => {
       const dropDown = new DropDown(array); 
       filterdiv.appendChild(dropDown.renderDOM());
     });
+    console.log('done');
   }
     
     
     
   renderHTML(){
-    console.log(naturalTherapies, conventionalTreatementTypes, sideEffects, yearPublished, studyDesigns, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomes, outcomeTypes, interactions, naturalTerapyTypes, conventionalTreatmentTypes);
+    
     return /*html*/`
         <div> 
         <div id='filter'>
