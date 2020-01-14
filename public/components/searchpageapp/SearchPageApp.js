@@ -11,8 +11,7 @@ class Filter extends Component {
     const filterdiv = dom.querySelector('#filter');
     const filter = new Filter(); 
     filterdiv.appendChild(filter.renderDOM());
-    const dropDown = new DropDown();
-    
+        
   }
 
   renderHTML(){
