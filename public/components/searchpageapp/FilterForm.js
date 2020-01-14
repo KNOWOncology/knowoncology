@@ -4,7 +4,7 @@ class FilterForm extends Component {
   onRender(dom){
 
     const form = dom.querySelector('form');
-    const array = this.props;
+    const { array } = this.props;
     const summary = array[0];
     const fieldsArray = array.slice(1);
     fieldsArray.forEach(field => {
@@ -12,6 +12,7 @@ class FilterForm extends Component {
       checkBox.type = 'checkbox';
       checkBox.name = summary;
       checkBox.textContent = field;
+      /// will this work?
       checkBox.value = field;
       form.appendChild(checkBox);
 
