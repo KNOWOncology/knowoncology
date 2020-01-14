@@ -1,10 +1,10 @@
-/* eslint-disable no-console */
-require('dotenv').config(); 
-require('./lib/utils/connect')(); 
+require('dotenv').config();
+require('./lib/utils/connect')();
 
-const mongoose = require('mongoose'); 
-const { seedData } = require('./lib/utils/seed-data'); 
+const mongoose = require('mongoose');
+const { seedData } = require('./lib/utils/seedData');
 
 seedData()
-  .then(() => console.log('duuuuooonnneeeeeee'))
+
+  .then(() => console.log('done'))
   .finally(() => mongoose.connection.close());
