@@ -3,7 +3,6 @@ import Header from '../header/Header.js';
 import DropDown from './DropDown.js';
 import  { naturalTherapies, conventionalTreatementTypes, sideEffects, yearPublished, studyDesigns, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomes, outcomeTypes, interactions, naturalTerapyTypes, conventionalTreatmentTypes } from './dropDownSeedData.js';
 
-console.log(naturalTherapies, conventionalTreatementTypes, sideEffects, yearPublished, studyDesigns, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomes, outcomeTypes, interactions, naturalTerapyTypes, conventionalTreatmentTypes);
 
 ///// submit button, clear all, [search box]
 
@@ -13,25 +12,26 @@ class Filter extends Component {
     dom.prepend(header.renderDOM());
     const filterdiv = dom.querySelector('#filter');
     const filterArrays = [
-    
-      
-
+            
+            
+            
     ];
     filterArrays.forEach(array => {
       const dropDown = new DropDown(array); 
       filterdiv.appendChild(dropDown.renderDOM());
     });
   }
-  
-
-
+    
+    
+    
   renderHTML(){
+    console.log(naturalTherapies, conventionalTreatementTypes, sideEffects, yearPublished, studyDesigns, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomes, outcomeTypes, interactions, naturalTerapyTypes, conventionalTreatmentTypes);
     return /*html*/`
-     <div> 
+        <div> 
         <div id='filter'>
         
         </div>
-    </div>
+        </div>
     `;
     
   }
