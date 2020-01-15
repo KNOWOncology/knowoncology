@@ -2,14 +2,14 @@ import Component from '../Component.js';
 import Header from '../header/Header.js';
 import DropDown from './DropDown.js';
 import ResultsSection from './ResultsSection.js';
-import  { naturalTherapies, conventionalTreatementTypes, sideEffects, yearPublished, studyDesigns, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomes, outcomeTypes, interactions, naturalTerapyTypes, conventionalTreatmentTypes } from './dropDownSeedData.js';
+import  { naturalTherapyAgents, conventionalTreatementAgents, sideEffects, yearPublished, studyTypes, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomeCategories, outcomeResults, interactions, naturalTherapyTypes, conventionalTreatmentTypes } from './dropDownSeedData.js';
 
 class Filter extends Component {
   onRender(dom) {
     const header = new Header(); 
     dom.prepend(header.renderDOM());
     const filterArrays = [      
-      naturalTherapies, conventionalTreatementTypes, sideEffects, yearPublished, studyDesigns, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomes, outcomeTypes, interactions, naturalTerapyTypes, conventionalTreatmentTypes       
+      yearPublished, studyTypes, populationSizes, tumorType, naturalTherapyTypes, naturalTherapyAgents, conventionalTreatmentTypes, conventionalTreatementAgents, outcomeCategories, outcomeResults, sideEffects, studyDesignFeatures,  adverseEvents,  stage, interactions,        
     ];
 
     const selectedOptionsArray = []; 
@@ -44,16 +44,17 @@ class Filter extends Component {
     });
     dom.appendChild(searchButton);
 
-    const resultsSection = new ResultsSection();
-    dom.appendChild(resultsSection.renderDOM());
+    let resultsSection;
 
     const loadResults = async() => {
-      const initialResults = await fetch('/api/v1/summaries');
-      resultsSection.update(initialResults);
+      const summaries = await fetch('/api/v1/summaries');
+      const data = await summaries.json();
+      resultsSection = new ResultsSection(data);
+      dom.appendChild(resultsSection.renderDOM());
     };
 
     loadResults();
-    
+
     // eslint-disable-next-line no-console
     console.log('done done');
   }
