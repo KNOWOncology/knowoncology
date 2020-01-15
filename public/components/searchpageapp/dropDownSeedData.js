@@ -11,7 +11,7 @@ export const yearPublished =
     ['Year Published', 'All Years', '2020', '2019', '2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004', '2003', '2002', '2001', '2000', '1999', '1998', '1997', '1996', '1995', '1994', '1993', '1992', '1991', '1989', '1988', '1987', '1984', '1981', '1974', '1969'];
 
 export const studyDesigns =
-    ['Study Designs', 'Case Report/Series', 'Clinical Trial', 'Observational', 'Systematic review and/or Meta-analysis'];
+    ['Study Designs', 'All Study Designs', 'Case Report/Series', 'Clinical Trial', 'Observational', 'Systematic review and/or Meta-analysis'];
 
 export const studyDesignFeatures =
     ['Study Design Features', 'All Design Features', 'Blinded', 'Controlled Clinical Trial', 'Cross-Over Trial', 'Double-Blinded', 'Multi-center', 'Placebo-Controlled', 'Randomized', 'Retrospective', 'Uncontrolled Clinical Trial'];
@@ -29,7 +29,7 @@ export const stage =
     ['Stage', 'All Stages', '0', 'I', 'II', 'III', 'IV', 'Not Reported'];
 
 export const outcomes =
-    ['Outcomes', 'All Outcome Types', 'All Outcome Types', 'QOL', 'Recurrence', 'Safety', 'Surrogate', 'Survival', 'Symptoms'];
+    ['Outcomes', 'All Outcomes', 'QOL', 'Recurrence', 'Safety', 'Surrogate', 'Survival', 'Symptoms'];
 
 export const outcomeTypes =
     ['Outcome Types', 'All Outcome Types', 'Mixed', 'Negative', 'Neutral', 'Positive'];

@@ -17,18 +17,19 @@ class Filter extends Component {
 
     const selectedOptionsArray = []; 
 
+    ////// send back as object with unique keys for each set of values. 
+
     filterArrays.forEach(array => {
       const dropDown = new DropDown({ array, selectedOptionsArray }); 
-      filterdiv.appendChild(dropDown.renderDOM());
+      dom.appendChild(dropDown.renderDOM());
     });
 
-    const searchButton = dom.querySelector('#search');
-    searchButton.addEventListener('click', () => {
-      const checkboxes = dom.querySelectorAll('input[checked=true]');
-      console.log(checkboxes);
-    });
+    //   const searchButton = dom.querySelector('#search');
+    //   searchButton.addEventListener('click', () => {
+    //     const checkboxes = dom.querySelectorAll('input[checked=true]');
+    //   });
 
-    console.log('done');
+  //   console.log('done done');
   }
     
     
@@ -36,11 +37,10 @@ class Filter extends Component {
   renderHTML(){
     
     return /*html*/`
-        <div> 
+      
         <div id='filter'>
         </div>
-        <button id='search'>SEARCH</button>
-        </div>
+       
     `;
     
   }
