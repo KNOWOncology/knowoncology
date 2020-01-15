@@ -70,18 +70,37 @@ describe('auth routes', () => {
         status: 401
       })));
 
-  it('requires admin to patch a user', () =>
+  it('requires admin to patch a user role', () =>
     agents.userAgent
-      .patch(`/api/v1/auth/${users.regular._id}`)
+      .patch(`/api/v1/auth/${users.regular._id}/admin`)
       .send({ role: 'admin' })
       .then(res => expect(res.body).toEqual({
         message: 'Must be an admin',
         status: 500
       })));
 
-  it('can patch a user', () =>
-    agents.adminAgent
+  it('allows a user to change their user details', () =>
+    agents.userAgent
       .patch(`/api/v1/auth/${users.regular._id}`)
+      .send({ displayName: 'Megaman' })
+      .then(res => expect(res.body).toEqual({
+        _id: users.regular._id,
+        email: 'user@test.com',
+        displayName: 'Megaman',
+        role: 'regular',
+        __v: 0
+      })));
+
+  it('fails if a user tries to change their role', () => 
+    agents.userAgent
+      .patch(`/api/v1/auth/${users.regular._id}`)
+      .send({ role: 'admin' })
+      .then(res => expect(res.status).toEqual(400))
+  );
+
+  it('allows an admin to patch a user', () =>
+    agents.adminAgent
+      .patch(`/api/v1/auth/${users.regular._id}/admin`)
       .send({ role: 'admin' })
       .then(res => expect(res.body).toEqual({
         _id: users.regular._id,
@@ -90,6 +109,7 @@ describe('auth routes', () => {
         role: 'admin',
         __v: 0
       })));
+
   it('can log a user out', async() => {
     await agents.userAgent
       .get('/api/v1/auth/verify')
