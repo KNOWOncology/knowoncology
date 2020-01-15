@@ -1,9 +1,8 @@
 import Component from '../Component.js';
 import Header from '../header/Header.js';
 import DropDown from './DropDown.js';
+import ResultsSection from './ResultsSection.js';
 import  { naturalTherapies, conventionalTreatementTypes, sideEffects, yearPublished, studyDesigns, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomes, outcomeTypes, interactions, naturalTerapyTypes, conventionalTreatmentTypes } from './dropDownSeedData.js';
-
-///// submit button, clear all, [search box]
 
 class Filter extends Component {
   onRender(dom) {
@@ -14,7 +13,6 @@ class Filter extends Component {
     ];
 
     const selectedOptionsArray = []; 
-    ////// send back as object with unique keys for each set of values. 
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.name = 'searchBar';
@@ -34,16 +32,28 @@ class Filter extends Component {
         selectedOptionsArray
       };
       
-      await fetch('/api/v1/summaries', {
+      const searchResults = await fetch('/api/v1/summaries', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(searchObject)
       });
+
+      resultsSection.update(searchResults);
     });
     dom.appendChild(searchButton);
 
+    const resultsSection = new ResultsSection();
+    dom.appendChild(resultsSection.renderDOM());
+
+    const loadResults = async() => {
+      const initialResults = await fetch('/api/v1/summaries');
+      resultsSection.update(initialResults);
+    };
+
+    loadResults();
+    
     // eslint-disable-next-line no-console
     console.log('done done');
   }
