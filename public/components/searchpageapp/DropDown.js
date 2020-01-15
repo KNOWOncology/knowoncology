@@ -5,13 +5,15 @@ import FilterForm from './FilterForm.js';
 class DropDown extends Component {
   onRender(dom) {
     const details = dom.querySelector('details');
-    const props = this.props;    
-    const filterForm = new FilterForm(props); 
+    const { array, selectedOptionsArray } = this.props;
+     
+    const filterForm = new FilterForm({ selectedOptionsArray, array }); 
     details.appendChild(filterForm.renderDOM());
+
   }
 
   renderHTML() {
-    const array = this.props;
+    const { array } = this.props;
     const summary = array[0];
     return /*html*/`
 <div>
