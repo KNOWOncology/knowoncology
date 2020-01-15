@@ -32,8 +32,7 @@ class DropDown extends Component {
         else {
           selectedOptionsArray.splice(selectedOptionsArray.indexOf(checkBox.name), 1);
           checkBoxCount--;
-          if(checkBoxCount === 0) {
-            checkBox.parentNode.childNodes[3].checked = true;
+          if(checkBoxCount === 0) {checkBox.parentNode.childNodes[3].checked = true;
           }
 
 
