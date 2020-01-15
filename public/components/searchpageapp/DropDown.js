@@ -3,7 +3,8 @@ import Component from '../Component.js';
 class DropDown extends Component {
   onRender(dom) {
     const { array, selectedOptionsArray } = this.props;
-     
+    
+    let checkBoxCount = 0;
     const summary = array[0];
     const fieldsArray = array.slice(1);
     fieldsArray.forEach(field => {
@@ -25,17 +26,23 @@ class DropDown extends Component {
       checkBox.addEventListener('change', () => {
         if(!selectedOptionsArray.includes(checkBox.name)) {
           selectedOptionsArray.push(checkBox.name);
+          checkBoxCount++;
           checkBox.parentNode.childNodes[3].checked = false;
         }
         else {
           selectedOptionsArray.splice(selectedOptionsArray.indexOf(checkBox.name), 1);
-          checkBox.parentNode.childNodes[3].checked = true;
+          checkBoxCount--;
+          if(checkBoxCount === 0) {
+            checkBox.parentNode.childNodes[3].checked = true;
+          }
+
 
         }
         // if(checkBox !== checkBox.parentNode.childNodes[3]) {
 
         // }
-        console.log(checkBox.parentNode.childNodes[3].checked);
+        // console.log(checkBox.parentNode.childNodes[3].checked);
+        console.log(selectedOptionsArray);
         
       }); 
     });
