@@ -33,33 +33,17 @@ class DropDown extends Component {
           selectedOptionsArray.splice(selectedOptionsArray.indexOf(checkBox.name), 1);
           checkBoxCount--;
           if(checkBoxCount === 0) {checkBox.parentNode.childNodes[3].checked = true;
-          }
-
-
-        }
-        // if(checkBox !== checkBox.parentNode.childNodes[3]) {
-
-        // }
-        // console.log(checkBox.parentNode.childNodes[3].checked);
-        console.log(selectedOptionsArray);
-        
-      }); 
+          }}}); 
     });
   }
-
 
   renderHTML() {
     const { array } = this.props;
     const summary = array[0];
     return /*html*/`
-
-
     <details>
         <summary>${summary}</summary>
-
     </details>
-
-
     `;        
   }
 }
