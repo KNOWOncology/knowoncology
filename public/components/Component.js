@@ -23,6 +23,7 @@ class Component {
     // remember the root Element for later for replacing or removing
     this.rootElement = dom;
     // call onRender to allow components to do additional work
+    
     this.onRender(dom);
 
     // return to the caller
@@ -33,10 +34,9 @@ class Component {
     throw new Error(`Component "${this.constructor.name}" needs to implement renderHTML`);
   }
 
-  update(props) {
-    props = props || {};
+  update(props = {}) {
     // update the props:
-    Object.assign(this.props, props);
+    this.props = props;    
         
     const oldRoot = this.rootElement;
         

@@ -11,13 +11,13 @@ class Header extends Component {
   }
 
   renderHTML() {
+    const name = this.props;
+
     return /*html*/ `
       <header>
-        <ul>
-          <a href="../../pages/home/home.html">Home</a>
-          <a href="../../pages/studies/studies.html">Studies</a>
-          <button id="logout">Log out</button>
-        </ul>
+        <div id='know-header-background'><span id='know-header-text'>KNOWOncology Summary Search Page</span></div>
+        <span id='identifier'>Logged in as: ${name}</span>
+        <button id="logout">Log out</button>
       </header>
     `;
   }
