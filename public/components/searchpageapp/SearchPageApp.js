@@ -41,16 +41,19 @@ class SearchPageApp extends Component {
       
       resultsSection.update(data);
     });
+
     dom.appendChild(searchButton);
 
     let resultsSection;
 
-    (async() => {
+    const initialLoad = async() => {
       const summaries = await fetch('/api/v1/summaries');
       const data = await summaries.json();
       resultsSection = new ResultsSection(data);
       dom.appendChild(resultsSection.renderDOM());
-    })();
+    };
+
+    initialLoad();
   }
     
   renderHTML(){
