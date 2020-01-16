@@ -7,12 +7,14 @@ class ResultItem extends Component {
 
   renderHTML(){
     const summary = this.props;
-
+    console.log(summary.cancerType);
+    
     return /*html*/ `
       <div class='summary'>
         <p class='title'>Title: ${summary.summaryTitle}</p>
         <p class='year'>Year Published: ${summary.yearPublished}</p>
         <p class='type'>Study Type: ${summary.studyType}</p>
+        <p class='type'>Study Design Features: ${summary.studyDesignFeatures.entry}</p>
         <p class='summary'>Summary: ${summary.publicSummary.entry}</p>
         <p class='number-participants'>Number of Participants: ${summary.numParticipants.entry}</p>
         <p class='population'>Population: ${summary.populationDesc.entry}</p>
