@@ -25,6 +25,7 @@
     "supertest": "^4.0.2"
   },
   "dependencies": {
+    "@mendeley/api": "^10.0.2",
     "airtable": "^0.8.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.4",
