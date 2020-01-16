@@ -1,6 +1,7 @@
 import Component from '../Component.js';
 import Header from '../header/Header.js';
 import DropDown from './DropDown.js';
+import Loading from '../loading/loading.js';
 import ResultsSection from './ResultsSection.js';
 import  { naturalTherapyAgents, conventionalTreatementAgents, sideEffects, yearPublished, studyTypes, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomeCategories, outcomeResults, interactions, naturalTherapyTypes, conventionalTreatmentTypes } from './dropDownSeedData.js';
 import getName from '../util/get-name.js';
@@ -28,9 +29,13 @@ class SearchPageApp extends Component {
       dom.appendChild(dropDown.renderDOM());
     });
 
+    const loading = new Loading({ loading: true });
+    
     const searchButton = document.createElement('button');
     searchButton.textContent = 'Search';
     searchButton.addEventListener('click', async() => {
+      dom.appendChild(loading.renderDOM());
+      
       const searchTextInput = searchInput.value;
       const searchObject = { searchTextInput, selectedOptionsArray };
       
@@ -40,10 +45,11 @@ class SearchPageApp extends Component {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(searchObject)
+        
       });
       const data = await searchResults.json();
-      
       resultsSection.update(data);
+      loading.update({ loading: false });
     });
 
     dom.appendChild(searchButton);

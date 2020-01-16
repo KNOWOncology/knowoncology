@@ -1,0 +1,17 @@
+.loading-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 23vh;
+    width: 99%;
+    opacity: 0.85;
+    
+}
+
+.loading-container img {
+    width: 40vw; 
+    height: 40vh;
+    border-radius: 8%;
+}
+
