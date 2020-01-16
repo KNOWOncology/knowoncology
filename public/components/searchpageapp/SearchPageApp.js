@@ -43,9 +43,6 @@ class Filter extends Component {
       });
     });
     dom.appendChild(searchButton);
-
-    // eslint-disable-next-line no-console
-    console.log('done done');
   }
     
   renderHTML(){
