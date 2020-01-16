@@ -96,7 +96,7 @@ fetch('/api/v1/auth/verify', {
   .then(res => res.json())
   .then(user => {
     if(user._id){
-      window.location.href = './pages/home/home.html';
+      window.location.href = './pages/search-page/search-page.html';
     } else {
       displayLogin();
     }
