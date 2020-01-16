@@ -137,7 +137,7 @@ describe('auth routes', () => {
     await agents.userAgent
       .get('/api/v1/auth/verify')
       .then(res => {
-        expect(res.status).toEqual(500);
+        expect(res.status).toEqual(500);        
       });    
   });
 });
