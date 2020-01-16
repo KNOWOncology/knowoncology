@@ -1,4 +1,5 @@
 import Component from '../Component.js';
+import { dictionary } from './resultsSectionSetArray.js';
  
 class DropDown extends Component {
   onRender(dom) {
@@ -24,8 +25,8 @@ class DropDown extends Component {
       dom.appendChild(label);
     
       checkBox.addEventListener('change', () => {
-        if(!selectedOptionsArray.includes(checkBox.name)) {
-          selectedOptionsArray.push(checkBox.name);
+        if(!selectedOptionsArray.includes(checkBox.name)) {     
+          selectedOptionsArray.push(`${dictionary[summary]}:${field}`);
           checkBoxCount++;
           checkBox.parentNode.childNodes[3].checked = false;
         }

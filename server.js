@@ -8,7 +8,7 @@ const app = require('./lib/app');
 const PORT = process.env.PORT || 7890;
 
 // Check for new summaries in Airtable
-new Cron('* * * * *', getNewSummaries, null, true, 'America/Los_Angeles');
+new Cron('0 1 * * *', getNewSummaries, null, true, 'America/Los_Angeles');
 
 // listen for cron
 app.listen('3128', () => {
