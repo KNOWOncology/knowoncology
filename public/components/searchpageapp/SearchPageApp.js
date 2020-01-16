@@ -9,7 +9,7 @@ class SearchPageApp extends Component {
     const header = new Header(); 
     dom.prepend(header.renderDOM());
     const filterArrays = [      
-      yearPublished, studyTypes, populationSizes, tumorType, naturalTherapyTypes, naturalTherapyAgents, conventionalTreatmentTypes, conventionalTreatementAgents, outcomeCategories, outcomeResults, sideEffects, studyDesignFeatures,  adverseEvents,  stage, interactions,        
+      yearPublished, studyTypes, populationSizes, tumorType, naturalTherapyTypes, naturalTherapyAgents, conventionalTreatmentTypes, conventionalTreatementAgents, outcomeCategories, outcomeResults, sideEffects, studyDesignFeatures,  adverseEvents,  stage, interactions
     ];
 
     const selectedOptionsArray = []; 
@@ -37,7 +37,6 @@ class SearchPageApp extends Component {
         body: JSON.stringify(searchObject)
       });
       const data = await searchResults.json();
-      console.log(data);
       
       resultsSection.update(data);
     });

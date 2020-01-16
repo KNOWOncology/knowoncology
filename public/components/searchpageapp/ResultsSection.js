@@ -5,7 +5,6 @@ class ResultsSection extends Component {
   onRender(dom){
     const summaries = this.props;
     
-    
     summaries.forEach(summary => {
       const resultItem = new ResultItem(summary);
       dom.appendChild(resultItem.renderDOM());

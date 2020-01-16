@@ -35,11 +35,8 @@ class Component {
   }
 
   update(props = {}) {
-    console.log(props);
     // update the props:
-    this.props = props;
-    console.log(this.props.length);
-    
+    this.props = props;    
         
     const oldRoot = this.rootElement;
         
