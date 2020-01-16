@@ -3,11 +3,16 @@ import Header from '../header/Header.js';
 import DropDown from './DropDown.js';
 import ResultsSection from './ResultsSection.js';
 import  { naturalTherapyAgents, conventionalTreatementAgents, sideEffects, yearPublished, studyTypes, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomeCategories, outcomeResults, interactions, naturalTherapyTypes, conventionalTreatmentTypes } from './dropDownSeedData.js';
+import getName from '../util/get-name.js';
 
 class SearchPageApp extends Component {
   onRender(dom) {
-    const header = new Header(); 
-    dom.prepend(header.renderDOM());
+    getName()
+      .then(name => {
+        const header = new Header(name); 
+        dom.prepend(header.renderDOM());
+      });
+
     const filterArrays = [      
       yearPublished, studyTypes, populationSizes, tumorType, naturalTherapyTypes, naturalTherapyAgents, conventionalTreatmentTypes, conventionalTreatementAgents, outcomeCategories, outcomeResults, sideEffects, studyDesignFeatures,  adverseEvents,  stage, interactions
     ];
