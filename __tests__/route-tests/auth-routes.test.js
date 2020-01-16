@@ -79,6 +79,15 @@ describe('auth routes', () => {
         status: 500
       })));
 
+  it('fails if a user tries to change the details of another user', () => {
+    agents.userAgent
+      .patch(`/api/v1/auth/${users.admin._id}`)
+      .send({ displayName: 'you have been hacked' })
+      .then(res => {
+        expect(res.status).toEqual(401);
+      });
+  });
+
   it('allows a user to change their user details', () =>
     agents.userAgent
       .patch(`/api/v1/auth/${users.regular._id}`)
