@@ -4,7 +4,7 @@ import DropDown from './DropDown.js';
 import ResultsSection from './ResultsSection.js';
 import  { naturalTherapyAgents, conventionalTreatementAgents, sideEffects, yearPublished, studyTypes, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomeCategories, outcomeResults, interactions, naturalTherapyTypes, conventionalTreatmentTypes } from './dropDownSeedData.js';
 
-class Filter extends Component {
+class SearchPageApp extends Component {
   onRender(dom) {
     const header = new Header(); 
     dom.prepend(header.renderDOM());
@@ -27,36 +27,30 @@ class Filter extends Component {
     searchButton.textContent = 'Search';
     searchButton.addEventListener('click', async() => {
       const searchTextInput = searchInput.value;
-      const searchObject = { 
-        searchTextInput, 
-        selectedOptionsArray
-      };
+      const searchObject = { searchTextInput, selectedOptionsArray };
       
-      const searchResults = await fetch('/api/v1/summaries', {
+      const searchResults = await fetch('/api/v1/summaries/search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(searchObject)
       });
-
-      resultsSection.update(searchResults);
+      const data = await searchResults.json();
+      console.log(data);
+      
+      resultsSection.update(data);
     });
     dom.appendChild(searchButton);
 
     let resultsSection;
 
-    const loadResults = async() => {
+    (async() => {
       const summaries = await fetch('/api/v1/summaries');
       const data = await summaries.json();
       resultsSection = new ResultsSection(data);
       dom.appendChild(resultsSection.renderDOM());
-    };
-
-    loadResults();
-
-    // eslint-disable-next-line no-console
-    console.log('done done');
+    })();
   }
     
   renderHTML(){
@@ -66,4 +60,4 @@ class Filter extends Component {
     `; 
   }}
 
-export default Filter;
+export default SearchPageApp;
