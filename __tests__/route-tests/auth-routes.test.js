@@ -117,7 +117,7 @@ describe('auth routes', () => {
         expect(res.status).toEqual(200);
       });
     await agents.userAgent
-      .post('/api/v1/auth/logout')
+      .get('/api/v1/auth/logout')
       .then(res => expect(res.body).toEqual({
         _id: users.regular._id,
         email: 'user@test.com',
