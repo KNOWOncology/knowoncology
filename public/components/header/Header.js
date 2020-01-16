@@ -1,12 +1,12 @@
 import Component from '../Component.js';
-import deleteCookie from '../util/deleteCookie.js';
 
 class Header extends Component {
   onRender(dom){
     const logoutButton = dom.querySelector('#logout');
     logoutButton
-      .addEventListener('click', () => {
-        deleteCookie('session');
+      .addEventListener('click', async() => {
+        await fetch('/api/v1/auth/logout');
+        window.location.href = '../../index.html';
       });
   }
 
