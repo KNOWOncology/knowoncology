@@ -4,13 +4,18 @@ import DropDown from './DropDown.js';
 import Loading from '../loading/loading.js';
 import ResultsSection from './ResultsSection.js';
 import  { naturalTherapyAgents, conventionalTreatementAgents, sideEffects, yearPublished, studyTypes, studyDesignFeatures, populationSizes, adverseEvents, tumorType, stage, outcomeCategories, outcomeResults, interactions, naturalTherapyTypes, conventionalTreatmentTypes } from './dropDownSeedData.js';
+import getName from '../util/get-name.js';
 
-class Filter extends Component {
+class SearchPageApp extends Component {
   onRender(dom) {
-    const header = new Header(); 
-    dom.prepend(header.renderDOM());
+    getName()
+      .then(name => {
+        const header = new Header(name); 
+        dom.prepend(header.renderDOM());
+      });
+
     const filterArrays = [      
-      yearPublished, studyTypes, populationSizes, tumorType, naturalTherapyTypes, naturalTherapyAgents, conventionalTreatmentTypes, conventionalTreatementAgents, outcomeCategories, outcomeResults, sideEffects, studyDesignFeatures,  adverseEvents,  stage, interactions,        
+      yearPublished, studyTypes, populationSizes, tumorType, naturalTherapyTypes, naturalTherapyAgents, conventionalTreatmentTypes, conventionalTreatementAgents, outcomeCategories, outcomeResults, sideEffects, studyDesignFeatures,  adverseEvents,  stage, interactions
     ];
 
     const selectedOptionsArray = []; 
@@ -32,12 +37,9 @@ class Filter extends Component {
       dom.appendChild(loading.renderDOM());
       
       const searchTextInput = searchInput.value;
-      const searchObject = { 
-        searchTextInput, 
-        selectedOptionsArray
-      };
+      const searchObject = { searchTextInput, selectedOptionsArray };
       
-      const searchResults = await fetch('/api/v1/summaries', {
+      const searchResults = await fetch('/api/v1/summaries/search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -45,8 +47,8 @@ class Filter extends Component {
         body: JSON.stringify(searchObject)
         
       });
-      console.log('loader here and gone');
-      resultsSection.update(searchResults);
+      const data = await searchResults.json();
+      resultsSection.update(data);
       loading.update({ loading: false });
     });
 
@@ -54,17 +56,14 @@ class Filter extends Component {
 
     let resultsSection;
 
-    const loadResults = async() => {
+    const initialLoad = async() => {
       const summaries = await fetch('/api/v1/summaries');
       const data = await summaries.json();
       resultsSection = new ResultsSection(data);
       dom.appendChild(resultsSection.renderDOM());
     };
 
-    loadResults();
-
-    // eslint-disable-next-line no-console
-    console.log('done done');
+    initialLoad();
   }
     
   renderHTML(){
@@ -74,4 +73,4 @@ class Filter extends Component {
     `; 
   }}
 
-export default Filter;
+export default SearchPageApp;
