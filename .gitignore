@@ -6,9 +6,9 @@
 *.json
 */.json
 **/.json
-unsummarized.js
-*/unsummarized.js
-**/unsummarized.js
+unsummarized-seed.js
+*/unsummarized-seed.js
+**/unsummarized-seed.js
 
 # Logs
 logs
