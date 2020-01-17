@@ -90,9 +90,7 @@ class SearchPageApp extends Component {
         dropdown.open = false;
       });
       
-
       const searchTextInput = searchInput.value;
-      const summarizedSearchObject = { searchTextInput, selectedOptionsArray };
 
       let unsummarizedOptionsArray = [];
       selectedOptionsArray.forEach(option => {
@@ -100,6 +98,8 @@ class SearchPageApp extends Component {
           unsummarizedOptionsArray.push('pubYear:' + option.slice(14, 18));
         }
       });
+
+      const summarizedSearchObject = { searchTextInput, selectedOptionsArray };
       const unsummarizedSearchObject = { searchTextInput, unsummarizedOptionsArray };
       
       const summarizedSearchResults = await fetch('/api/v1/summaries/search', {
@@ -109,7 +109,6 @@ class SearchPageApp extends Component {
         },
         body: JSON.stringify(summarizedSearchObject)
       });
-
       const summarizedData = await summarizedSearchResults.json();
 
       const unsummarizedSearchResults = await fetch('/api/v1/unsummarized/search', {
@@ -119,7 +118,6 @@ class SearchPageApp extends Component {
         },
         body: JSON.stringify(unsummarizedSearchObject)
       });
-
       const unsummarizedData = await unsummarizedSearchResults.json();
       
 
@@ -131,9 +129,11 @@ class SearchPageApp extends Component {
 
     (async() => {
       const summaries = await fetch('/api/v1/summaries');
-      const unsummaries = await fetch('/api/v1/unsummarized')
+      const unsummaries = await fetch('/api/v1/unsummarized');
       const summarizedData = await summaries.json();
       const unsummarizedData = await unsummaries.json();
+      console.log(unsummarizedData);
+      
       resultsSection = new ResultsSection({ summarizedData, unsummarizedData });
       dom.appendChild(resultsSection.renderDOM());
       loading.update({ loading: false });

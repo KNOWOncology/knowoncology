@@ -1,5 +1,6 @@
 import Component from '../Component.js';
 import ResultItem from './ResultItem.js';
+import UnsummarizedResultItem from './UnsummarizedResultItem.js';
 
 class ResultsSection extends Component {
   onRender(dom){
@@ -40,6 +41,11 @@ class ResultsSection extends Component {
       else {
         dom.appendChild(resultItem.renderDOM());
       }
+    });
+
+    unsummarizedData.forEach(unsummarizedItem => {
+      const unsummarizedResultItem = new UnsummarizedResultItem(unsummarizedItem);
+      unsummarizedResultsSection.appendChild(unsummarizedResultItem.renderDOM());
     });
 
   }
