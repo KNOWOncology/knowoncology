@@ -13,7 +13,7 @@ describe('summaries routes', () => {
   it('get a summary by id', async() => {
     const summary = await Summary.findOne();
     const summaryObj = castToPojo(summary);
-    agents.userAgent
+    return agents.userAgent
       .get(`/api/v1/summaries/${summaryObj._id}`)
       .then(res => expect(res.body).toEqual({
         ...summaryObj
