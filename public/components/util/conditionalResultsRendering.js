@@ -9,8 +9,14 @@ const conditionalRender = (object, setArray, destination) => {
       } else {
         fieldText = object[set[1]];
       }
-      p.textContent = `${set[0]}: ${fieldText}`;
-      destination.appendChild(p);
+      const lineTitle = document.createElement('p');
+      lineTitle.classList.add('line-title');
+      lineTitle.textContent = `${set[0]}:`;
+      const lineContent = document.createElement('span');
+      lineContent.classList.add('line-content');
+      lineContent.textContent = ` ${fieldText}`;
+      lineTitle.appendChild(lineContent);
+      destination.appendChild(lineTitle);
     }
   });
 };
