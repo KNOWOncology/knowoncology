@@ -69,28 +69,6 @@ class SearchPageApp extends Component {
         }
       });
 
-      // const summarizedSearchObject = { searchTextInput : '', selectedOptionsArray: [] };
-      // const unsummarizedSearchObject = { searchTextInput : '', unsummarizedOptionsArray: [] };
-
-      // const summarizedSearchResults = await fetch('/api/v1/summaries/search', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(summarizedSearchObject)
-      // });
-      // const summarizedData = await summarizedSearchResults.json();
-
-      // const unsummarizedSearchResults = await fetch('/api/v1/unsummarized/search', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(unsummarizedSearchObject)
-      // });
-      // const unsummarizedData = await 
-      // unsummarizedSearchResults.json();
-
       const summaries = await fetch('/api/v1/summaries');
       const unsummaries = await fetch('/api/v1/unsummarized');
       const summarizedData = await summaries.json();
@@ -118,10 +96,7 @@ class SearchPageApp extends Component {
       });
 
       const summarizedSearchObject = { searchTextInput, selectedOptionsArray };
-      const unsummarizedSearchObject = { searchTextInput, unsummarizedOptionsArray };
-      console.log(summarizedSearchObject);
-      console.log(unsummarizedSearchObject);
-      
+      const unsummarizedSearchObject = { searchTextInput, unsummarizedOptionsArray };      
       
       const summarizedSearchResults = await fetch('/api/v1/summaries/search', {
         method: 'POST',
