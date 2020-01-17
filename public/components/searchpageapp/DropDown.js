@@ -25,13 +25,13 @@ class DropDown extends Component {
       dom.appendChild(label);
     
       checkBox.addEventListener('change', () => {
-        if(!selectedOptionsArray.includes(checkBox.name)) {     
+        if(!selectedOptionsArray.includes(`${dictionary[summary]}:${field}`)) {     
           selectedOptionsArray.push(`${dictionary[summary]}:${field}`);
           checkBoxCount++;
           checkBox.parentNode.childNodes[3].checked = false;
         }
         else {
-          selectedOptionsArray.splice(selectedOptionsArray.indexOf(checkBox.name), 1);
+          selectedOptionsArray.splice(selectedOptionsArray.indexOf(`${dictionary[summary]}:${field}`), 1);
           checkBoxCount--;
           if(checkBoxCount === 0) {checkBox.parentNode.childNodes[3].checked = true;
           }}}); 
@@ -43,7 +43,7 @@ class DropDown extends Component {
     const summary = array[0];
     return /*html*/`
     <details>
-        <summary>${summary}</summary>
+        <summary class='filter-summary'>${summary}</summary>
     </details>
     `;        
   }

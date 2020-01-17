@@ -1,0 +1,125 @@
+#filter {
+  margin-top: 100px;
+}
+
+#text-input {
+  height: 24px;
+  width: 500px;
+  margin: 20px;
+  font-family: 'Public Sans', sans-serif;
+  font-size: 1em;
+  padding-left: 10px;
+}
+
+#search-button {
+  width: 165px;
+  height: 40px;
+  border-radius: 5px;
+  font-family: 'Public Sans', sans-serif;
+  background: #b076ae;
+  font-size: .8em;
+}
+
+#search-button:hover {
+  cursor: pointer;
+  background: #683266;
+  color: #ffffff;
+  transition-duration: .2s;
+}
+
+#clear-button {
+  width: 165px;
+  height: 40px;
+  border-radius: 5px;
+  font-family: 'Public Sans', sans-serif;
+  background: #fabe80;
+  font-size: .8em;
+  margin-left: 20px;
+}
+
+#clear-button:hover {
+  cursor: pointer;
+  background: #f69022;
+  color: #ffffff;
+  transition-duration: .2s;
+}
+
+#results-header {
+  font-size: 3em;
+  background: #9c9b658f;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+#unsummarized-results-header {
+  font-size: 3em;
+  background: #68689c8f;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+summary {
+  font-family: 'Poppins', sans-serif;
+  margin: 10px;
+  font-size: 1.2em;
+}
+
+details {
+  padding: 7px 10px;
+  font-family: 'Public Sans', sans-serif;
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  cursor: pointer;
+}
+
+details[open] > p {
+  margin-left: 64px;
+}
+
+input[type=checkbox] {
+  margin: 13px;
+}
+
+input[type=checkbox]:checked + label {
+  font-weight: bold;
+  color: #68689c;
+}
+
+label {
+  font-size: 1.1em;
+}
+
+#no-results {
+  text-align: center;
+  font-size: 1.5em;
+  font-family: 'Public Sans', sans-serif;
+}
+
+.dropdown-result { 
+  margin-left: 20px;
+}
+
+.line-title {
+  font-weight: bold;
+}
+
+.line-content {
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+.results-list {
+  font-size: 2em;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.counter {
+  float: right;
+}

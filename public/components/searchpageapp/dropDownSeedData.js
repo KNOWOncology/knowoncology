@@ -17,7 +17,7 @@ export const studyDesignFeatures =
     ['Study Design Features', 'All Design Features', 'Blinded', 'Controlled Clinical Trial', 'Cross-Over Trial', 'Double-Blinded', 'Multi-center', 'Placebo-Controlled', 'Randomized', 'Retrospective', 'Uncontrolled Clinical Trial'];
 
 export const populationSizes =
-    ['Population Sizes (N)', 'All Population Sizes (N)', 'Small (0-49', 'Medium (50-99)', 'Large (100-499)', 'Extra Large (≥500)'];
+    ['Population Sizes (N)', 'All Population Sizes (N)', 'Small (0-49)', 'Medium (50-99)', 'Large (100-499)', 'Extra Large (≥500)'];
 
 export const adverseEvents =
     ['Adverse Events', 'All Adverse Events', 'Absent', 'None Reported', 'Present'];
