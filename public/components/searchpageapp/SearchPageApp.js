@@ -22,6 +22,7 @@ class SearchPageApp extends Component {
     ];
 
     let selectedOptionsArray = []; 
+    let unsummarizedOptionsArray = [];
 
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
@@ -55,9 +56,11 @@ class SearchPageApp extends Component {
       loading.update({ loading: true });
 
       selectedOptionsArray = [];
+      unsummarizedOptionsArray = [];
       searchInput.value = '';
+
       const filterBoxes = dom.querySelectorAll('input[type=checkbox]');
-      
+
       filterBoxes.forEach(filterBox => {
         if(filterBox.nextElementSibling.textContent.slice(0, 3) === 'All'){
           filterBox.checked = true;
@@ -66,19 +69,34 @@ class SearchPageApp extends Component {
         }
       });
 
-      const searchObject = { searchTextInput : '', selectedOptionsArray: [] };
+      // const summarizedSearchObject = { searchTextInput : '', selectedOptionsArray: [] };
+      // const unsummarizedSearchObject = { searchTextInput : '', unsummarizedOptionsArray: [] };
 
-      const searchResults = await fetch('/api/v1/summaries/search', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(searchObject)
-      });
+      // const summarizedSearchResults = await fetch('/api/v1/summaries/search', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(summarizedSearchObject)
+      // });
+      // const summarizedData = await summarizedSearchResults.json();
 
-      const data = await searchResults.json();
+      // const unsummarizedSearchResults = await fetch('/api/v1/unsummarized/search', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(unsummarizedSearchObject)
+      // });
+      // const unsummarizedData = await 
+      // unsummarizedSearchResults.json();
 
-      resultsSection.update(data);
+      const summaries = await fetch('/api/v1/summaries');
+      const unsummaries = await fetch('/api/v1/unsummarized');
+      const summarizedData = await summaries.json();
+      const unsummarizedData = await unsummaries.json();
+
+      resultsSection.update({ summarizedData, unsummarizedData });
       loading.update({ loading: false });
     });
 
@@ -92,7 +110,7 @@ class SearchPageApp extends Component {
       
       const searchTextInput = searchInput.value;
 
-      let unsummarizedOptionsArray = [];
+      unsummarizedOptionsArray = [];
       selectedOptionsArray.forEach(option => {
         if(option.slice(0, 13) === 'yearPublished'){
           unsummarizedOptionsArray.push('pubYear:' + option.slice(14, 18));
@@ -101,6 +119,9 @@ class SearchPageApp extends Component {
 
       const summarizedSearchObject = { searchTextInput, selectedOptionsArray };
       const unsummarizedSearchObject = { searchTextInput, unsummarizedOptionsArray };
+      console.log(summarizedSearchObject);
+      console.log(unsummarizedSearchObject);
+      
       
       const summarizedSearchResults = await fetch('/api/v1/summaries/search', {
         method: 'POST',
@@ -120,8 +141,6 @@ class SearchPageApp extends Component {
       });
       const unsummarizedData = await 
       unsummarizedSearchResults.json();
-      console.log(unsummarizedData);
-      
 
       resultsSection.update({ summarizedData, unsummarizedData });
       loading.update({ loading: false });
@@ -134,7 +153,6 @@ class SearchPageApp extends Component {
       const unsummaries = await fetch('/api/v1/unsummarized');
       const summarizedData = await summaries.json();
       const unsummarizedData = await unsummaries.json();
-      console.log(unsummarizedData);
       
       resultsSection = new ResultsSection({ summarizedData, unsummarizedData });
       dom.appendChild(resultsSection.renderDOM());

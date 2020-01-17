@@ -88,6 +88,7 @@ class ResultsSection extends Component {
       }
     });
 
+    // eslint-disable-next-line no-unused-vars
     unsummarizedData.forEach(UnsummarizedResultItem => {
       unsummarizedCount++;
     });
