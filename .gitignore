@@ -9,6 +9,8 @@
 unsummarized-seed.js
 */unsummarized-seed.js
 **/unsummarized-seed.js
+lib/utils/seed-mendeley.js
+lib/utils/seed-us.js
 
 # Logs
 logs
