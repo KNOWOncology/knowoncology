@@ -123,3 +123,9 @@ label {
 .counter {
   float: right;
 }
+
+.header-counter {
+  position: absolute;
+  right: 14px;
+  font-size: .7em;
+}

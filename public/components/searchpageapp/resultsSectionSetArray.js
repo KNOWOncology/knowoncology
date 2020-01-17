@@ -1,5 +1,7 @@
 const setArray = [['Title', 'summaryTitle'], ['Year Published', 'yearPublished'], ['Study Type', 'studyType'], ['Study Design Features', 'studyDesignFeatures'], ['Summary', 'publicSummary'], ['Number of Participants', 'numParticipants'], ['Population', 'populationDesc'], ['Cancer Type', 'cancerType'], ['Stage', 'staging'], ['Tumor Type', 'tumorTypeTags'], ['Natural Therapy Type', 'naturalTherapyCategory'], ['Natural Therapy Description', 'naturalTherapyDesc'], ['Natural Therapy Agents', 'naturalTherapyName'], ['Natural Therapy Components', 'naturalTherapyComponents'], ['Conventional Treatment Type', 'conventionalTreatment'], ['Interactions', 'interactionsDesc'], ['Side Effects', 'sideEffectTags'], ['Adverse Events', 'adverseEventsDesc'], ['Outcome Category', 'outcomeCategory'], ['Outcome Results', 'outcomeResults'], ['Outcome Description', 'outcomesResultsDesc']];
 
+export const unsummarizedSetArray = [['Title', 'title'], ['Year Published', 'pubYear'], ['Source', 'source'], ['Abstract', 'abstract']];
+
 export const dictionary = {
   'Year Published': 'yearPublished',
   'Study Types': 'studyType',
