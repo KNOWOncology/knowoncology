@@ -11,11 +11,6 @@ const PORT = process.env.PORT || 7890;
 new Cron('0 1 * * *', getNewSummaries, null, true, 'America/Los_Angeles');
 
 // listen for cron
-app.listen('3128', () => {
-  console.log('cron listening on 3128');
-});
+app.listen('3128', () => console.log('cron listening on 3128')); // eslint-disable-line no-console
 
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Started on ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Started on ${PORT}`)); // eslint-disable-line no-console

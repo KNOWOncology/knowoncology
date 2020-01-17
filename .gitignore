@@ -3,6 +3,12 @@
 .env
 *.csv
 **/.csv
+*.json
+*/.json
+**/.json
+unsummarized.js
+*/unsummarized.js
+**/unsummarized.js
 
 # Logs
 logs
