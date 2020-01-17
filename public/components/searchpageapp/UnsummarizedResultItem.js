@@ -14,7 +14,7 @@ class UnsummarizedResultItem extends Component {
 
     return /*html*/ `
       <details>
-        <summary><span class='dropdown-title'>${unsummarizedItem.title}</span></summary>
+        <summary><span class='dropdown-title'>${unsummarizedItem.title}</span><span class='unsummarized-result-year'>${unsummarizedItem.pubYear}</span></summary>
       </details>
     `;
   }

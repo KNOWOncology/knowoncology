@@ -35,6 +35,8 @@ class DropDown extends Component {
           checkBoxCount--;
           if(checkBoxCount === 0) {checkBox.parentNode.childNodes[3].checked = true;
           }}}); 
+          
+          
     });
   }
 

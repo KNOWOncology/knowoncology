@@ -68,6 +68,7 @@ summary {
   font-family: 'Poppins', sans-serif;
   margin: 10px;
   font-size: 1.2em;
+  cursor: pointer;
 }
 
 details {
@@ -75,7 +76,6 @@ details {
   font-family: 'Public Sans', sans-serif;
   border-top: 1px solid #dadada;
   border-bottom: 1px solid #dadada;
-  cursor: pointer;
 }
 
 details[open] > p {
@@ -128,4 +128,9 @@ label {
   position: absolute;
   right: 14px;
   font-size: .7em;
+}
+
+.unsummarized-result-year {
+  margin-left: 25px;
+  font-style: italic;
 }
