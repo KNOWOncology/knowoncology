@@ -80,6 +80,7 @@ class ResultsSection extends Component {
         <details id='systematic-review-results'>
           <summary class='results-list'>Systematic Review and/or Meta-analysis Results<span class='counter'>Total results: ${systematicCount}</span></summary>
         </details>
+        <h1 id='unsummarized-results-header'>Unsummarized Search Results</h1>
       </section>
     `;
   }

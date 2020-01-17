@@ -54,6 +54,16 @@
   font-family: 'Poppins', sans-serif;
 }
 
+#unsummarized-results-header {
+  font-size: 3em;
+  background: #68689c8f;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
 summary {
   font-family: 'Poppins', sans-serif;
   margin: 10px;
