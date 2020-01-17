@@ -3,7 +3,7 @@ import ResultItem from './ResultItem.js';
 
 class ResultsSection extends Component {
   onRender(dom){
-    const summaries = this.props;
+    const { summarizedData, unsummarizedData } = this.props;
     const resultsHeader = document.createElement('h1');
     resultsHeader.id = 'results-header';
     resultsHeader.textContent = 'Summarized Search Results';
@@ -13,15 +13,16 @@ class ResultsSection extends Component {
     const clinicalTrialResultsSection = dom.querySelector('#clinical-trial-results');
     const observationalResultsSection = dom.querySelector('#observational-results');
     const systemicReviewResultsSection = dom.querySelector('#systematic-review-results');
+    const unsummarizedResultsSection = dom.querySelector('#unsummarized-results-header');
     
-    if(!summaries[0]){
+    if(!summarizedData[0]){
       const noResults = document.createElement('div');
       noResults.id = 'no-results';
       noResults.textContent = 'Sorry, no results were found for your search. Please try changing your query or filters.';
       dom.appendChild(noResults);
     }
 
-    summaries.forEach(summary => {
+    summarizedData.forEach(summary => {
       const resultItem = new ResultItem(summary);
       const studyType = summary.studyType.toLowerCase();
       if(studyType === 'case report/series'){
@@ -44,13 +45,13 @@ class ResultsSection extends Component {
   }
 
   renderHTML(){
-    const summaries = this.props;
+    const { summarizedData, unsummarizedData } = this.props;
     let caseReportCount = 0;
     let clinicalTrialCount = 0;
     let observationalCount = 0;
     let systematicCount = 0;
 
-    summaries.forEach(summary => {
+    summarizedData.forEach(summary => {
       const studyType = summary.studyType.toLowerCase();
       if(studyType === 'case report/series'){
         caseReportCount++;

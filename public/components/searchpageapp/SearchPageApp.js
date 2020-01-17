@@ -92,20 +92,38 @@ class SearchPageApp extends Component {
       
 
       const searchTextInput = searchInput.value;
-      const searchObject = { searchTextInput, selectedOptionsArray };
-      console.log(searchObject);
+      const summarizedSearchObject = { searchTextInput, selectedOptionsArray };
+
+      let unsummarizedOptionsArray = [];
+      selectedOptionsArray.forEach(option => {
+        if(option.slice(0, 13) === 'yearPublished'){
+          unsummarizedOptionsArray.push('pubYear:' + option.slice(14, 18));
+        }
+      });
+      const unsummarizedSearchObject = { searchTextInput, unsummarizedOptionsArray };
       
-      const searchResults = await fetch('/api/v1/summaries/search', {
+      const summarizedSearchResults = await fetch('/api/v1/summaries/search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(searchObject)
+        body: JSON.stringify(summarizedSearchObject)
       });
 
-      const data = await searchResults.json();
+      const summarizedData = await summarizedSearchResults.json();
 
-      resultsSection.update(data);
+      const unsummarizedSearchResults = await fetch('/api/v1/unsummarized/search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(unsummarizedSearchObject)
+      });
+
+      const unsummarizedData = await unsummarizedSearchResults.json();
+      
+
+      resultsSection.update(summarizedData);
       loading.update({ loading: false });
     });
 
@@ -113,8 +131,10 @@ class SearchPageApp extends Component {
 
     (async() => {
       const summaries = await fetch('/api/v1/summaries');
-      const data = await summaries.json();
-      resultsSection = new ResultsSection(data);
+      const unsummaries = await fetch('/api/v1/unsummarized')
+      const summarizedData = await summaries.json();
+      const unsummarizedData = await unsummaries.json();
+      resultsSection = new ResultsSection({ summarizedData, unsummarizedData });
       dom.appendChild(resultsSection.renderDOM());
       loading.update({ loading: false });
     })();
