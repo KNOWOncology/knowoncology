@@ -21,8 +21,8 @@ class SearchPageApp extends Component {
       yearPublished, studyTypes, populationSizes, tumorType, naturalTherapyTypes, naturalTherapyAgents, conventionalTreatmentTypes, conventionalTreatementAgents, outcomeCategories, outcomeResults, sideEffects, studyDesignFeatures,  adverseEvents,  stage, interactions
     ];
 
-    let selectedOptionsArray = []; 
-    let unsummarizedOptionsArray = [];
+    const selectedOptionsArray = []; 
+    const unsummarizedOptionsArray = [];
 
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
@@ -55,8 +55,8 @@ class SearchPageApp extends Component {
     clearButton.addEventListener('click', async() => {
       loading.update({ loading: true });
 
-      selectedOptionsArray = [];
-      unsummarizedOptionsArray = [];
+      selectedOptionsArray.length = 0;
+      unsummarizedOptionsArray.length = 0;
       searchInput.value = '';
 
       const filterBoxes = dom.querySelectorAll('input[type=checkbox]');
@@ -110,7 +110,7 @@ class SearchPageApp extends Component {
       
       const searchTextInput = searchInput.value;
 
-      unsummarizedOptionsArray = [];
+      unsummarizedOptionsArray.length = 0;
       selectedOptionsArray.forEach(option => {
         if(option.slice(0, 13) === 'yearPublished'){
           unsummarizedOptionsArray.push('pubYear:' + option.slice(14, 18));

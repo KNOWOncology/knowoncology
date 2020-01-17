@@ -25,16 +25,21 @@ class DropDown extends Component {
       dom.appendChild(label);
     
       checkBox.addEventListener('change', () => {
+        
         if(!selectedOptionsArray.includes(`${dictionary[summary]}:${field}`)) {     
           selectedOptionsArray.push(`${dictionary[summary]}:${field}`);
+          console.log(selectedOptionsArray);
           checkBoxCount++;
           checkBox.parentNode.childNodes[3].checked = false;
         }
         else {
           selectedOptionsArray.splice(selectedOptionsArray.indexOf(`${dictionary[summary]}:${field}`), 1);
+          console.log(selectedOptionsArray);
           checkBoxCount--;
           if(checkBoxCount === 0) {checkBox.parentNode.childNodes[3].checked = true;
           }}}); 
+          
+          
     });
   }
 
