@@ -1,8 +1,14 @@
 import Component from '../Component.js';
+import conditionalRender from '../util/conditionalResultsRendering.js';
+import { unsummarizedSetArray } from './resultsSectionSetArray.js';
 
 class UnsummarizedResultItem extends Component {
   onRender(dom){
+    const { unsummarizedItem } = this.props;
+    console.log(unsummarizedItem);
+    
 
+    conditionalRender(unsummarizedItem, unsummarizedSetArray, dom);
   }
 
   renderHTML(){
@@ -10,11 +16,7 @@ class UnsummarizedResultItem extends Component {
 
     return /*html*/ `
       <details>
-        <summary><span class='dropdown-title'>${unsummarizedItem.title}</span><span></summary>
-        <p class='line-title'>Title: <span class='line-content'>${unsummarizedItem.title}</span></p>
-        <p class='line-title'>Year Published: <span class='line-content'>${unsummarizedItem.pubYear}</span></p>
-        <p class='line-title'>Source: <span class='line-content'>${unsummarizedItem.source}</span></p>
-        <p class='line-title'>Abstract: <span class='line-content'>${unsummarizedItem.abstract}</span></p>
+        <summary><span class='dropdown-title'>${unsummarizedItem.title}</span></summary>
       </details>
     `;
   }

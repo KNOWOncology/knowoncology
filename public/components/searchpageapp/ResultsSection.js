@@ -5,10 +5,8 @@ import UnsummarizedResultItem from './UnsummarizedResultItem.js';
 class ResultsSection extends Component {
   onRender(dom){
     const { summarizedData, unsummarizedData } = this.props;
-    const resultsHeader = document.createElement('h1');
-    resultsHeader.id = 'results-header';
-    resultsHeader.textContent = 'Summarized Search Results';
-    dom.prepend(resultsHeader);
+    
+    let summarizedCount = 0;
 
     const caseReportResultsSection = dom.querySelector('#case-report-results');
     const clinicalTrialResultsSection = dom.querySelector('#clinical-trial-results');
@@ -24,15 +22,20 @@ class ResultsSection extends Component {
     }
 
     summarizedData.forEach(summary => {
+      summarizedCount++;
       const resultItem = new ResultItem(summary);
       const studyType = summary.studyType.toLowerCase();
+      
       if(studyType === 'case report/series'){
         caseReportResultsSection.appendChild(resultItem.renderDOM());
       } 
+      else if(studyType === 'case reports/series'){
+        caseReportResultsSection.appendChild(resultItem.renderDOM());
+      }
       else if(studyType === 'clinical trial'){
         clinicalTrialResultsSection.appendChild(resultItem.renderDOM());
       }
-      else if(studyType === 'observational results'){
+      else if(studyType === 'observational'){
         observationalResultsSection.appendChild(resultItem.renderDOM());
       }
       else if(studyType === 'systematic review and/or meta-analysis'){
@@ -43,7 +46,18 @@ class ResultsSection extends Component {
       }
     });
 
+    const resultsHeader = document.createElement('h1');
+    resultsHeader.id = 'results-header';
+    resultsHeader.textContent = 'Summarized Search Results';
+    const summarizedTotal = document.createElement('span');
+    summarizedTotal.classList.add('header-counter');
+    summarizedTotal.textContent = `Total results: ${summarizedCount}`;
+    resultsHeader.appendChild(summarizedTotal);
+    dom.prepend(resultsHeader);
+
     unsummarizedData.forEach(unsummarizedItem => {
+      console.log(unsummarizedItem);
+      
       const unsummarizedResultItem = new UnsummarizedResultItem(unsummarizedItem);
       unsummarizedResultsSection.appendChild(unsummarizedResultItem.renderDOM());
     });
@@ -56,21 +70,29 @@ class ResultsSection extends Component {
     let clinicalTrialCount = 0;
     let observationalCount = 0;
     let systematicCount = 0;
+    let unsummarizedCount = 0;
 
     summarizedData.forEach(summary => {
       const studyType = summary.studyType.toLowerCase();
       if(studyType === 'case report/series'){
         caseReportCount++;
       } 
+      else if(studyType === 'case reports/series'){
+        caseReportCount++;
+      }
       else if(studyType === 'clinical trial'){
         clinicalTrialCount++;
       }
-      else if(studyType === 'observational results'){
+      else if(studyType === 'observational'){
         observationalCount++;
       }
       else if(studyType === 'systematic review and/or meta-analysis'){
         systematicCount++;
       }
+    });
+
+    unsummarizedData.forEach(UnsummarizedResultItem => {
+      unsummarizedCount++;
     });
 
     return /*html*/ `
@@ -87,7 +109,7 @@ class ResultsSection extends Component {
         <details id='systematic-review-results'>
           <summary class='results-list'>Systematic Review and/or Meta-analysis Results<span class='counter'>Total results: ${systematicCount}</span></summary>
         </details>
-        <h1 id='unsummarized-results-header'>Unsummarized Search Results</h1>
+        <h1 id='unsummarized-results-header'>Unsummarized Search Results<span class='header-counter'>Total results: ${unsummarizedCount}</span></h1>
       </section>
     `;
   }

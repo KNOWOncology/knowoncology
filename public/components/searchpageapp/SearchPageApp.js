@@ -118,10 +118,12 @@ class SearchPageApp extends Component {
         },
         body: JSON.stringify(unsummarizedSearchObject)
       });
-      const unsummarizedData = await unsummarizedSearchResults.json();
+      const unsummarizedData = await 
+      unsummarizedSearchResults.json();
+      console.log(unsummarizedData);
       
 
-      resultsSection.update(summarizedData);
+      resultsSection.update({ summarizedData, unsummarizedData });
       loading.update({ loading: false });
     });
 
@@ -132,8 +134,6 @@ class SearchPageApp extends Component {
       const unsummaries = await fetch('/api/v1/unsummarized');
       const summarizedData = await summaries.json();
       const unsummarizedData = await unsummaries.json();
-      console.log(unsummarizedData);
-      
       resultsSection = new ResultsSection({ summarizedData, unsummarizedData });
       dom.appendChild(resultsSection.renderDOM());
       loading.update({ loading: false });
