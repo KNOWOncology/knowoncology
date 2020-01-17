@@ -21,7 +21,7 @@ class SearchPageApp extends Component {
       yearPublished, studyTypes, populationSizes, tumorType, naturalTherapyTypes, naturalTherapyAgents, conventionalTreatmentTypes, conventionalTreatementAgents, outcomeCategories, outcomeResults, sideEffects, studyDesignFeatures,  adverseEvents,  stage, interactions
     ];
 
-    const selectedOptionsArray = []; 
+    let selectedOptionsArray = []; 
 
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
@@ -54,6 +54,8 @@ class SearchPageApp extends Component {
     clearButton.addEventListener('click', async() => {
       loading.update({ loading: true });
 
+      selectedOptionsArray = [];
+      searchInput.value = '';
       const filterBoxes = dom.querySelectorAll('input[type=checkbox]');
       
       filterBoxes.forEach(filterBox => {
@@ -91,6 +93,7 @@ class SearchPageApp extends Component {
 
       const searchTextInput = searchInput.value;
       const searchObject = { searchTextInput, selectedOptionsArray };
+      console.log(searchObject);
       
       const searchResults = await fetch('/api/v1/summaries/search', {
         method: 'POST',

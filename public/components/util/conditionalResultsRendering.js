@@ -16,7 +16,6 @@ const conditionalRender = (object, setArray, destination) => {
       lineContent.classList.add('line-content');
       lineContent.textContent = ` ${fieldText}`;
       lineTitle.appendChild(lineContent);
-      // p.textContent = `${set[0]}: ${fieldText}`;
       destination.appendChild(lineTitle);
     }
   });
