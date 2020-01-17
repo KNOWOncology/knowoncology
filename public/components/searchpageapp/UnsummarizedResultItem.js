@@ -5,8 +5,6 @@ import { unsummarizedSetArray } from './resultsSectionSetArray.js';
 class UnsummarizedResultItem extends Component {
   onRender(dom){
     const { unsummarizedItem } = this.props;
-    console.log(unsummarizedItem);
-    
 
     conditionalRender(unsummarizedItem, unsummarizedSetArray, dom);
   }

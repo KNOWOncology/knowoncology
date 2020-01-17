@@ -12,7 +12,7 @@ class ResultsSection extends Component {
     const clinicalTrialResultsSection = dom.querySelector('#clinical-trial-results');
     const observationalResultsSection = dom.querySelector('#observational-results');
     const systemicReviewResultsSection = dom.querySelector('#systematic-review-results');
-    const unsummarizedResultsSection = dom.querySelector('#unsummarized-results-header');
+    const unsummarizedResultsSection = dom.querySelector('#unsummarized-results-section');
     
     if(!summarizedData[0]){
       const noResults = document.createElement('div');
@@ -54,14 +54,11 @@ class ResultsSection extends Component {
     summarizedTotal.textContent = `Total results: ${summarizedCount}`;
     resultsHeader.appendChild(summarizedTotal);
     dom.prepend(resultsHeader);
-
+    
     unsummarizedData.forEach(unsummarizedItem => {
-      console.log(unsummarizedItem);
-      
-      const unsummarizedResultItem = new UnsummarizedResultItem(unsummarizedItem);
+      const unsummarizedResultItem = new UnsummarizedResultItem({ unsummarizedItem });
       unsummarizedResultsSection.appendChild(unsummarizedResultItem.renderDOM());
     });
-
   }
 
   renderHTML(){
@@ -110,6 +107,7 @@ class ResultsSection extends Component {
           <summary class='results-list'>Systematic Review and/or Meta-analysis Results<span class='counter'>Total results: ${systematicCount}</span></summary>
         </details>
         <h1 id='unsummarized-results-header'>Unsummarized Search Results<span class='header-counter'>Total results: ${unsummarizedCount}</span></h1>
+        <div id='unsummarized-results-section'></div>
       </section>
     `;
   }

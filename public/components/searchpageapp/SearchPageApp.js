@@ -134,6 +134,8 @@ class SearchPageApp extends Component {
       const unsummaries = await fetch('/api/v1/unsummarized');
       const summarizedData = await summaries.json();
       const unsummarizedData = await unsummaries.json();
+      console.log(unsummarizedData);
+      
       resultsSection = new ResultsSection({ summarizedData, unsummarizedData });
       dom.appendChild(resultsSection.renderDOM());
       loading.update({ loading: false });
