@@ -3,6 +3,13 @@
 .env
 *.csv
 **/.csv
+*.json
+*/.json
+**/.json
+unsummarized-seed.js
+*/unsummarized-seed.js
+**/unsummarized-seed.js
+lib/utils/seed-mendeley.js
 
 # Logs
 logs

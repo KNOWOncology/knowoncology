@@ -4,8 +4,10 @@
   "description": "knowoncology",
   "main": "server.js",
   "scripts": {
-    "test": "jest --verbose --runInBand --testTimeout=30000",
-    "tw": "npm run test -- --watchAll",
+    "test": "npm run dotest",
+    "tw": "npm run dotw",
+    "dotest": "jest --verbose --runInBand --testTimeout=30000",
+    "dotw": "npm run test -- --watchAll",
     "start": "node server.js",
     "start:watch": "nodemon server.js"
   },
@@ -22,7 +24,8 @@
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",
     "prompt": "^1.0.0",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "monk": "^7.1.2"
   },
   "dependencies": {
     "airtable": "^0.8.1",

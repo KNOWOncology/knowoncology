@@ -6,9 +6,7 @@ describe('User model', () => {
       email: 'test@test.com',
       role: 'user'
     });
-
-    const { errors } = user.validateSync();
-
+    
     expect(user.displayName).toEqual('test');
   });
 
@@ -54,7 +52,5 @@ describe('User model', () => {
     });
 
     expect(user.displayName).toEqual('test@test@@weirdusername');
-  })
-
-
+  });
 });
