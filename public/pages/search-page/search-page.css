@@ -57,6 +57,7 @@
 summary {
   font-family: 'Poppins', sans-serif;
   margin: 10px;
+  font-size: 1.2em;
 }
 
 details {
@@ -101,4 +102,14 @@ label {
 .line-content {
   font-weight: normal;
   margin-left: 5px;
+}
+
+.results-list {
+  font-size: 2em;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.counter {
+  float: right;
 }
