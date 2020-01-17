@@ -12,9 +12,11 @@ class ResultItem extends Component {
   renderHTML(){
     const summary = this.props;
     
+    const color = summary.outcomeResults.entry === 'Neutral' ? 'color:blue' : summary.outcomeResults.entry === 'Mixed' ? 'color:orange' : summary.outcomeResults.entry === 'Negative' ? 'color:red' : summary.outcomeResults.entry === 'Positive' ? 'color:green' : 'color:black';
+
     return /*html*/ `
       <details>
-        <summary><span class='dropdown-title'>${summary.summaryTitle}</span><span class='dropdown-result'>${summary.outcomeResults.entry}</span></summary>
+        <summary><span class='dropdown-title'>${summary.summaryTitle}</span><span class='dropdown-result' style=${color}>${summary.outcomeResults.entry}</span></summary>
       </details>
     `;
   }

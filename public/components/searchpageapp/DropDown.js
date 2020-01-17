@@ -43,7 +43,7 @@ class DropDown extends Component {
     const summary = array[0];
     return /*html*/`
     <details>
-        <summary>${summary}</summary>
+        <summary class='filter-summary'>${summary}</summary>
     </details>
     `;        
   }
