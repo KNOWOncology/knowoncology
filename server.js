@@ -1,7 +1,5 @@
 require('dotenv').config();
 
-// address Phusion settings re: multiple listen statements
-// https://www.phusionpassenger.com/library/indepth/nodejs/reverse_port_binding.html
 if(typeof(PhusionPassenger) !== 'undefined')
     PhusionPassenger.configure({ autoInstall: false }); // eslint-disable-line
 
