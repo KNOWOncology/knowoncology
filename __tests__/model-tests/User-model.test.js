@@ -10,6 +10,16 @@ describe('User model', () => {
     expect(user.displayName).toEqual('test');
   });
 
+  it('creates a user with a displayName if displayName is provided', ()=> {
+    const user = new User({
+      email: 'test@test.com',
+      role: 'user',
+      displayName: 'Coolio'
+    });
+
+    expect(user.displayName).toEqual('Coolio');
+  });
+
   it('requires an email', () => {
     const user = new User({
       password: 'password',

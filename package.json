@@ -7,7 +7,7 @@
   "scripts": {
     "test": "npm run dotest",
     "tw": "npm run dotw",
-    "dotest": "jest --verbose --runInBand --testTimeout=30000",
+    "dotest": "jest --verbose --runInBand --testTimeout=40000 --detectOpenHandles",
     "dotw": "npm run test -- --watchAll",
     "start": "node server.js",
     "start:watch": "nodemon server.js"
